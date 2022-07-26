@@ -1,0 +1,10 @@
+version: '3.9'
+
+services:
+  portfolio:
+    build: 
+      context: ./portfolio/.
+    ports:
+      - 8000:8000
+    volumes:
+      - ./portfolio:/app
