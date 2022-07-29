@@ -1,0 +1,87 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block head %}
+<title> Portfolio </title>
+<link href="{% static '/css/portfolio.css' %}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <div class="card card-body h-100" id="profile-wrapper">
+                <img src="{% static 'img/image.jpg' %}" alt="profile photo">
+                <hr>
+                <p>Hi I'm Veysel. I'm Back End Developer & DevOps Engineer.</p>
+                <ul class="social-links">
+                    <li><i class="bi bi-facebook social"></i></li>
+                    <li><i class="bi bi-twitter social"></i></li>
+                    <li><i class="bi bi-github social"></i></li>
+                    <li><i class="bi bi-linkedin social"></i></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="card card-body h-100">
+                <h4>Who am I?</h4>
+                <p>
+                    Hello, I'm Veysel AKSİN. Back – End Developer 🧑‍💻. I live in Istanbul.
+                    I am developing data Analysis, Machine Learning, Deep Learning, Chatbot applications at the beginner level, with a focus on web projects.
+                    Every developer has a main language. My main language has evolved from Java to Python.
+                    I think that writing easy and useful scripts is the biggest factor.
+                </p>
+                <p>
+                    I graduated from Yozgat Bozok University - Computer Engineering as a
+                    honored student. I’m Back-End Developer with half a year's of experience as
+                    a professional title. I'm blogging new posts and publish to people what I
+                    learned.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <div class="card card-body h-100">
+                <h5>About Me</h5>
+                <p>
+                    I was born in 1999 in Mardin. Shortly after my birth, my family migrated to Istanbul, so I am also
+                    emigrated 🐦.
+                    After graduating from Kocasinan Şehit Samet Kırbaş Vocational Technical and Anatolian High School in
+                    2017, I started to study at
+                    Yozgat Bozok University Computer Engineering, located in the desolate land of Yozgat. I made good
+                    friends here and I think it was
+                    the best time of my student years.
+                </p>
+                <p>
+                    Most of my day is spent with Python. I write various libraries and plugins with Python. As a former
+                    Javan I think I betrayed Java,
+                    forgive me Java 🥲
+                    Finally, don't forget to follow me on my social media accounts. Good reading!
+                </p>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card card-body h-100">
+                <h5>What I Interest?</h5>
+                <p>
+                    When I was a student, I focused on improving myself. I worked in various communities. I specialized
+                    in OOP, Rest API, Clean Code,
+                    SQL and NoSQL, Django. I support people by writing various Python libraries.
+                    After completing my voluntary and compulsory internship in Robotistan for 4 months, I started to
+                    work as a Back - End Developer in the
+                    same company. I have developed and continue to develop applications in different fields for
+                    Robotistan company.
+                    The biggest of these is software called RFM. Web Scraping and Data Visualization, Sales forecasting
+                    applications are also
+                    included in the application as plugins integrated with RFM.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
