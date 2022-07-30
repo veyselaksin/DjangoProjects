@@ -5,6 +5,17 @@ services:
     build: 
       context: ./portfolio/.
     ports:
-      - 8000:8000
+      - 90:8000
     volumes:
       - ./portfolio:/app
+  
+  todoapp:
+    build:
+      context: ./todoapp/.
+    ports:
+      - 91:8000
+    volumes:
+      - ./todoapp:/app
+volumes:
+  portfolio:
+  todoapp:
