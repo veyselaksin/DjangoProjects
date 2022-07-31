@@ -16,6 +16,16 @@ services:
       - 91:8000
     volumes:
       - ./todoapp:/app
+
+  alwazah:
+    build:
+      context: ./alwazah/.
+    ports:
+      - 92:8000
+    volumes:
+      - ./alwazah:/app
+
 volumes:
   portfolio:
   todoapp:
+  alwazah:
