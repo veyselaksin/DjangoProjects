@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<title>Tasks</title>
+<link rel="stylesheet" href="{% static 'css/main.css' %}">
+<link rel="stylesheet" href="{% static 'css/tasks.css' %}">
+{% endblock %}
+
+{% block body %}
+
+<div class="center-column">
+
+    <div class="mb-3">
+        <form method="POST" action="">
+            {% csrf_token %}
+            {{ task_form.title }}
+            <button class="btn btn-info w-100" type="submit">Create Task</button>
+        </form>
+    </div>
+    <div class="row">
+        {% for task in tasks %}
+        <div>
+            <ul>
+                <li class="item-row">
+                    {% if task.complete == True %}
+                    <strike> {{ task }} </strike>
+                    {% else %}
+                    <span> {{ task }} </span>
+                    {% endif %}
+                    <a href="{% url 'update_task' task.id %}" class="btn btn-sm btn-info-white"> <i
+                            class="bi bi-arrow-right-square-fill"></i></a>
+                    <a href="{% url 'delete_task' task.id %}" class="btn btn-sm btn-danger"> <i
+                            class="bi bi-trash-fill"></i></a>
+                </li>
+            </ul>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
