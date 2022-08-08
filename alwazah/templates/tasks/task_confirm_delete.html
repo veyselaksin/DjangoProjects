@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block head %}
+{% endblock %}
+
+{% block body %}
+    <a href="{% url 'task_list' %}"> Go Back </a>
+
+    <form method="POST" action="">
+        {% csrf_token %}
+        <p>Are you sure you want to delete this task?</p>
+        <button class="btn btn-outline-danger" type="submit">Delete Item</button>
+    </form>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
