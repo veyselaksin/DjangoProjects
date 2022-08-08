@@ -44,9 +44,22 @@ services:
       - ./alwazah:/app
     depends_on:
       - postgresdb
+  
+  kwin:
+    container_name: kwin
+    build:
+      context: ./kwin/.
+    env_file: .env
+    ports:
+      - 93:8000
+    volumes:
+      - ./kwin:/app
+    depends_on:
+      - postgresdb
 
 volumes:
   postgres-data:
   portfolio:
   todoapp:
   alwazah:
+  kwin:
