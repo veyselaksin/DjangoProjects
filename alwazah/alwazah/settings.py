@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'tasks.apps.TasksConfig'
+    'tasks.apps.TasksConfig',
+    'users.apps.UsersConfig'
 ]
 
 MIDDLEWARE = [
@@ -78,8 +79,12 @@ WSGI_APPLICATION = 'alwazah.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'HOST': os.environ.get('ALWAZAH_POSTGRES_SERVER'),
+        'PORT': os.environ.get('ALWAZAH_POSTGRES_PORT'),
+        'NAME': os.environ.get('ALWAZAH_POSTGRES_DATABASE'),
+        'USER': os.environ.get('ALWAZAH_POSTGRES_USERNAME'),
+        'PASSWORD': os.environ.get('ALWAZAH_POSTGRES_PASSWORD')
     }
 }
 
@@ -114,6 +119,7 @@ USE_I18N = True
 
 USE_TZ = True
 
+LOGIN_URL = 'login'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/dev/howto/static-files/
