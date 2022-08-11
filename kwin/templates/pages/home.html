@@ -14,7 +14,7 @@
                         <h5 class="card-title">Total Orders</h5>
                     </div>
                     <div class="card-body">
-                        <h3 class="card-title"></h3>
+                        <h3 class="card-title">{{ total_orders }}</h3>
                     </div>
                 </div>
             </div>
@@ -26,7 +26,7 @@
                         <h5 class="card-title">Orders Delivered</h5>
                     </div>
                     <div class="card-body">
-                        <h3 class="card-title"></h3>
+                        <h3 class="card-title">{{ delivered_orders }}</h3>
                     </div>
                 </div>
             </div>
@@ -38,7 +38,7 @@
                         <h5 class="card-title">Orders Pending</h5>
                     </div>
                     <div class="card-body">
-                        <h3 class="card-title"></h3>
+                        <h3 class="card-title">{{ pending_orders }}</h3>
                     </div>
                 </div>
             </div>
@@ -58,7 +58,7 @@
                         </tr>
                             {% for customer in customers %}
                             <tr>
-                                <td></td>
+                                <td><a class="btn btn-sm btn-outline-primary" href="{ url 'customer_details' customer.id }">View</a></td>
                                 <td>{{ customer.name }}</td>
                                 <td>{{ customer.phone }}</td>
                             </tr>
@@ -70,7 +70,7 @@
                 <h5 class="fw-bold">ORDERS:</h5>
                 <hr>
                 <div class="card card-body">
-                    <a href="" class="btn btn-primary btn-sm btn-block">Create Order</a>
+                    <a href="{% url 'create_order' %}" class="btn btn-primary btn-sm btn-block">Create Order</a>
                     <table class="table table-sm">
                         <tr>
                             <th>Product</th>
@@ -85,8 +85,8 @@
                                 <td>{{ order.product.name }}</td>
                                 <td>{{ order.date_created }}</td>
                                 <td>{{ order.status }}</td>
-                                <td><a href="#">Update</a></td>
-                                <td><a href="#">Delete</a></td>
+                                <td><a class="btn btn-sm btn-info" href="{% url 'update_order' order.id %}">Update</a></td>
+                                <td><a class="btn btn-sm btn-danger" href="{% url 'delete_order' order.id %}">Delete</a></td>
                             </tr>
                         {% endfor %}
                     </table>

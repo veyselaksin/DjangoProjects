@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block head %}
+{% endblock %}
+
+{% block body %}
+{% include 'partials/_navbar.html' %}
+<form method="POST" action="">
+    {% csrf_token %}
+    {{ order_form }}
+    <button class="btn btn-primary" type="submit">Save</button>
+</form>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
