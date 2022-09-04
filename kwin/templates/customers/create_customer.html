@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block head %}
+{% endblock %}
+
+{% block body %}
+{% include 'partials/_navbar.html' %}
+<div class="container mt-3">
+    <div class="row">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Create Customer</h5>
+                <div class="form-group">
+                    <div class="row g-3">
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Name: </label>
+                                {{ customer_form.name}}
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">E-Mail: </label>
+                                {{ customer_form.email}}
+                            </div>
+                            <div class="mb-3">
+                                <label for="phone" class="form-label">Phone: </label>
+                                {{ customer_form.phone}}
+                            </div>
+                            <button class="btn btn-success" type="submit">Create New Customer</button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

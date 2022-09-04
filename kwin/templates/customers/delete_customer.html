@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block head %}
+{% endblock %}
+
+{% block body %}
+{% include 'partials/_navbar.html' %}
+<p>Do you want to delete {{ customer.name }}?</p>
+<form method="POST" action="">
+    {% csrf_token %}
+    <a href="{% url 'home' %}">Cancel</a>
+    <button class="btn btn-primary" type="submit">Save</button>
+</form>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

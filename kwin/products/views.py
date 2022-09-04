@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from .models import Product, Order
+from customers.models import Customer
 from .forms import OrderForm
+from django import forms
 
 # Create your views here.
 def products(request):
@@ -11,14 +13,19 @@ def products(request):
     }
     return render(request, 'products/products.html', context)
 
-def create_order(request):
-   order_form = OrderForm()
+def create_order(request, pk):
+   customer = Customer.objects.get(id=pk)
+   order_form = OrderForm(initial={"customer":customer})
+   # order_form.fields["customer"].widget = order_form.hidden_fields()
+   order_form.fields["customer"].widget = forms.HiddenInput()
 
    if request.method == 'POST':
       order_form = OrderForm(request.POST)
       if order_form.is_valid():
          order_form.save()
-         return redirect('/')
+         return redirect('customer_details', customer.id)
+
+   # print(order_form.fields["customer"].bound_data(data=customer, initial=None))
 
    context = {
       'order_form': order_form
