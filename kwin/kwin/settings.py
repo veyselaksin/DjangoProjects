@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'pages.apps.PagesConfig',
     'products.apps.ProductsConfig',
     'customers.apps.CustomersConfig',
+    'authentication.apps.AuthenticationConfig',
     'users.apps.UsersConfig'
 ]
 
