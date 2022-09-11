@@ -1,10 +1,15 @@
 from multiprocessing import context
 from django.shortcuts import render, redirect
+
+from authentication.decorators import allowed_users
 from .models import Customer
 from products.filters import OrderFilter
 from .forms import CustomerForm
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+@login_required(login_url="login")
+@allowed_users(roles=["admin", "user", "customer"])
 def customer(request, pk):
     customer = Customer.objects.get(id=pk)
     orders = customer.order_set.all()
@@ -21,6 +26,8 @@ def customer(request, pk):
     }
     return render(request, 'customers/customer_details.html', context)
 
+@login_required(login_url="login")
+@allowed_users(roles=["admin"])
 def create_customer(request):
     customerForm = CustomerForm()
 
@@ -34,6 +41,8 @@ def create_customer(request):
     }
     return render(request, 'customers/create_customer.html', context)
 
+@login_required(login_url="login")
+@allowed_users(roles=["admin"])
 def update_customer(request, pk):
     customer = Customer.objects.get(id=pk)
 
@@ -50,6 +59,8 @@ def update_customer(request, pk):
     }
     return render(request, 'customers/update_customer.html', context)
 
+@login_required(login_url="login")
+@allowed_users(roles=["admin"])
 def delete_customer(request, pk):
     customer = Customer.objects.get(id=pk)
 

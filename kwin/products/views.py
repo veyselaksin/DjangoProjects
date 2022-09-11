@@ -3,8 +3,12 @@ from .models import Product, Order
 from customers.models import Customer
 from .forms import OrderForm
 from django import forms
-
+from django.contrib.auth.decorators import login_required 
+from authentication.decorators import allowed_users
 # Create your views here.
+
+@login_required(login_url="login")
+@allowed_users(roles=["admin", "customer", "user"])
 def products(request):
     products = Product.objects.all()
 
@@ -13,6 +17,8 @@ def products(request):
     }
     return render(request, 'products/products.html', context)
 
+@login_required(login_url="login")
+@allowed_users(roles=["admin"])
 def create_order(request, pk):
    customer = Customer.objects.get(id=pk)
    order_form = OrderForm(initial={"customer":customer})
@@ -32,6 +38,8 @@ def create_order(request, pk):
    }
    return render(request, 'products/create_order.html', context)
 
+@login_required(login_url="login")
+@allowed_users(roles=["admin"])
 def update_order(request, pk):
    order = Order.objects.get(id=pk)
    order_form = OrderForm(instance=order)
@@ -47,6 +55,8 @@ def update_order(request, pk):
    }
    return render(request, 'products/update_order.html', context)
 
+@login_required(login_url="login")
+@allowed_users(roles=["admin"])
 def delete_order(request, pk):
    order = Order.objects.get(id=pk)
 
