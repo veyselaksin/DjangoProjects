@@ -22,3 +22,8 @@ def user_page(request):
         "orders": orders
     }
     return render(request, "users/user_page.html", context)
+
+def user_settings(request):
+    
+    context = {}
+    return render(request, "users/user_settings.html", context)
