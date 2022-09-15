@@ -81,11 +81,23 @@ services:
     depends_on:
       - mongodb 
 
+  cbserializer:
+    container_name: cbserializer
+    build:
+      context: ./cbserializer/.
+    env_file: .env
+    ports:
+      - 96:8000
+    volumes:
+      - ./cbserializer:/app
+    depends_on:
+      - mongodb 
 volumes:
   postgres-data:
   mongo-data:
   portfolio:
   serializer:
+  cbserializer:
   todoapp:
   alwazah:
   kwin:
