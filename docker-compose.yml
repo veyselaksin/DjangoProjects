@@ -80,6 +80,16 @@ services:
       - ./serializer:/app
     depends_on:
       - mongodb 
+  
+  locallibrary:
+    container_name: locallibrary
+    build:
+      context: ./locallibrary/.
+    env_file: ./locallibrary/.env
+    ports:
+      - 95:8000
+    volumes:
+      - ./locallibrary:/app
 
 volumes:
   postgres-data:
@@ -89,3 +99,4 @@ volumes:
   todoapp:
   alwazah:
   kwin:
+  locallibrary:
